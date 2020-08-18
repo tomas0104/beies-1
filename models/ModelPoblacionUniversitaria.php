@@ -101,14 +101,35 @@ class PoblacionUniversitaria{
     }
     
     public function ActualizarPoblacion($datos){
-        $query = 'UPDATE poblacion_universitaria SET tipo_documento = :tipo_documento, numero_documento = :numero_documento, '
-                . 'codigo_universidad = :codigo_universidad, nombres = :nombres, apellidos = :apellidos,'
-                . ' telefono = :telefono, celular = :celular, correo = :correo, vinculacion_experiencia = :vinculacion_experiencia,'
-                . 'vinculacion_universidad = :vinculacion_universidad, sede = :sede, facultad = :facultad, programa = :programa, '
-                . 'horas = :horas, tipologia_actividad = :tipologia_actividad FROM poblacion_universitaria WHERE ID = :id';
+        $query = 'UPDATE poblacion_universitaria SET tipo_documento = :tipo_documento, numero_documento = :numero_documento,
+                  codigo_universidad = :codigo_universidad, nombres = :nombres, apellidos = :apellidos,
+                  telefono = :telefono, celular = :celular, correo = :correo, vinculacion_experiencia = :vinculacion_experiencia,
+                  vinculacion_universidad = :vinculacion_universidad, sede = :sede, facultad = :facultad, programa = :programa,
+                  horas = :horas, tipologia_actividad = :tipologia_actividad  WHERE ID = :id';
         $base = $this->cnx->prepare($query);
+        $base->bindParam(':id', $datos['ID'], PDO::PARAM_INT);
         $base->bindParam(':tipo_documento', $datos['TipoDocumento'], PDO::PARAM_STR);
         $base->bindParam(':numero_documento', $datos['NumeroDocumento'], PDO::PARAM_INT);
+        $base->bindParam(':codigo_universidad', $datos['CodigoUniversidad'], PDO::PARAM_INT);
+        $base->bindParam(':nombres', $datos['Nombres'], PDO::PARAM_STR);
+        $base->bindParam(':apellidos', $datos['Apellidos'], PDO::PARAM_STR);
+        $base->bindParam(':telefono', $datos['Telefono'], PDO::PARAM_STR);
+        $base->bindParam(':celular', $datos['Celular'], PDO::PARAM_STR);
+        $base->bindParam(':correo', $datos['Correo'], PDO::PARAM_STR);
+        $base->bindParam(':vinculacion_experiencia', $datos['VinculoExperiencia'], PDO::PARAM_STR);
+        $base->bindParam(':vinculacion_universidad', $datos['VinculoUniversidad'], PDO::PARAM_STR);
+        $base->bindParam(':sede', $datos['Sede'], PDO::PARAM_STR);
+        $base->bindParam(':facultad', $datos['Facultad'], PDO::PARAM_STR);
+        $base->bindParam(':programa', $datos['Programa'], PDO::PARAM_STR);
+        $base->bindParam(':horas', $datos['Horas'], PDO::PARAM_STR);
+        $base->bindParam(':tipologia_actividad', $datos['TipologiaActividad'], PDO::PARAM_STR);
+        
+        if($base->execute()){
+            return true;
+        }
+        return false;
+        $base->close();
+        
     }
 
     public function Grafica(){

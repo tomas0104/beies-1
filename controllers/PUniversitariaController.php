@@ -96,7 +96,31 @@ switch ($_REQUEST['opcion']) {
         break;
 
     case 'ActualizarDatos':
-        print_r($_POST);
+        require_once '../config/funciones.php';
+        $datos = [
+            'ID' => filter_input(INPUT_POST, 'ID_Poblacion', FILTER_SANITIZE_NUMBER_INT),
+            'TipoDocumento' => filter_input(INPUT_POST, 'tipo_documento', FILTER_SANITIZE_SPECIAL_CHARS),
+            'VinculoExperiencia' => filter_input(INPUT_POST, 'vinculo', FILTER_SANITIZE_SPECIAL_CHARS),
+            'NumeroDocumento' => filter_input(INPUT_POST, 'numero_doc', FILTER_SANITIZE_NUMBER_INT),
+            'CodigoUniversidad' => filter_input(INPUT_POST, 'codigo_universidad', FILTER_SANITIZE_NUMBER_INT),
+            'Nombres' => filter_input(INPUT_POST, 'nombres', FILTER_SANITIZE_SPECIAL_CHARS),
+            'Apellidos' => filter_input(INPUT_POST, 'apellidos', FILTER_SANITIZE_SPECIAL_CHARS),
+            'Telefono' => filter_input(INPUT_POST, 'telefono', FILTER_SANITIZE_SPECIAL_CHARS),
+            'Celular' => filter_input(INPUT_POST, 'celular', FILTER_SANITIZE_SPECIAL_CHARS),
+            'Correo' => filter_input(INPUT_POST, 'correo', FILTER_SANITIZE_SPECIAL_CHARS),
+            'VinculoUniversidad' => filter_input(INPUT_POST, 'vinculo_2', FILTER_SANITIZE_SPECIAL_CHARS),
+            'Sede' => filter_input(INPUT_POST, 'sede', FILTER_SANITIZE_SPECIAL_CHARS),
+            'Facultad' => filter_input(INPUT_POST, 'facultad', FILTER_SANITIZE_SPECIAL_CHARS),           
+            'Programa' => filter_input(INPUT_POST, 'programa', FILTER_SANITIZE_SPECIAL_CHARS),
+            'Horas' => filter_input(INPUT_POST, 'horas', FILTER_SANITIZE_NUMBER_INT),
+            'TipologiaActividad' => (empty($_POST['tipologia'])) ? "Null" : ArrayComas($_POST['tipologia'])
+        ];
+        if($objeto->ActualizarPoblacion($datos)){
+            $response = 1;
+        }else{
+            $response = 0;
+        }
+        echo $response;
         break;
 }
 ?>

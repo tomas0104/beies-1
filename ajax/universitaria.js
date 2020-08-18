@@ -67,10 +67,9 @@ function GetID(id) {
         data: "ID=" + id,
         url: "./../controllers/PUniversitariaController.php?opcion=ObtenerID",
         success: function (r) {
-            console.log(r);
             var data = $.parseJSON(r);
             if (data.length > 0) {
-                $('#ID_PU').val(data[0]['ID']);
+            $('#ID_PU').val(data[0]['ID']);
             $('#tipo_doc').selectpicker('val', data[0]['TipoDocumento']);
             $('#DNI').val(data[0]['NumeroDocumento']);
             $('#ID_Universidad').val(data[0]['CodigoUniversidad']);
