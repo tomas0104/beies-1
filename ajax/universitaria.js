@@ -8,14 +8,13 @@ function SelectExperiencia() {
         success: function (r) {
             data = $.parseJSON(r);
             if (data.length > 0) {
-                select = "<option value='0'> Seleccione </option>";
+                select = "<option value=''> Seleccione </option>";
                 $.each(data, function (key, value) {
                     select = select + "<option value=" + value[0] + ">" + value[1] + "</option>";
                 });
                 $('#select_nombreexp').html(select);
                 $('#select_nombre').html(select);
                 $('#selectexp_objetivo').html(select);
-
             }
         }
     });
@@ -55,7 +54,21 @@ function UpdateDatos() {
         data: $('#form-updateU').serialize(),
         url: './../controllers/PUniversitariaController.php?opcion=ActualizarDatos',
         success: function (r) {
-            console.log(r);
+            if (r == 1) {
+                Swal.fire(
+                    'Exito!',
+                    'Datos actualizados con exito!',
+                    'success'
+                    )
+                setTimeout("location.href = 'g-universitaria'", 1000);
+            } else if (r == 0) {
+                //console.log(respuesta);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Algo salio mal!'
+                });
+            }
         }
     });
     return false;

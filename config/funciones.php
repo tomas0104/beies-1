@@ -17,4 +17,9 @@ function ArrayComas($post) {
     return $result;
 }
 
+function ObtenerExtension($dato){
+    $extension = explode('.', $dato);
+    return $extension[1];
+}
 ?>
+

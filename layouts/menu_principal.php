@@ -31,14 +31,16 @@
                                 <li><a href="javascript:void(0)" onclick="location.href = 'universitario'">Población universitaria</a></li>
                                 <li><a href="javascript:void(0)" onclick="location.href = 'externa'">Población externa</a></li>
                                 <li><a href="javascript:void(0)" onclick="location.href = 'organizaciones'">Organizaciones externas</a></li>
+                                <li><a href="javascript:void(0)" onclick="location.href = 'anexos'">Anexos</a></li>
                             </ul>
                         </div>
                         
                         <!--SUBTITULO DE GESTION-->
                         <div id="gestion" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="javascript:void(0)" onclick="location.href = 'g-experiencia'">Historial Experiencias</a>
-                                    <li><a href="javascript:void(0)" onclick="location.href = 'g-universitaria'">Historial Población Univeristaria</a></li>
+                                <li><a href="javascript:void(0)" onclick="location.href = 'g-experiencia'">Experiencias</a>
+                                <li><a href="javascript:void(0)" onclick="location.href = 'g-universitaria'">Población Univeristaria</a></li>
+                                <li><a href="javascript:void(0)" onclick="location.href = 'g-externa'">Población Externa</a></li>
                                 </ul>
                             </div>
                             <div id="graficas" class="tab-pane notika-tab-menu-bg animated flipInX">

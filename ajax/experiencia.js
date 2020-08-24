@@ -47,11 +47,11 @@ function SelectExperiencia() {
         success: function (r) {
             data = $.parseJSON(r);
             if (data.length > 0) {
-                select = "<option value='0'> Seleccione </option>";
+                select = '<option value=""> Seleccione </option>';
                 $.each(data, function (key, value) {
                     select = select + "<option value=" + value[0] + ">" + value[1] + "</option>";
                 });
-                $('#select_nombreexp').html(select);
+                $('#select_nombreexp').html(select); 
             }
         }
     });

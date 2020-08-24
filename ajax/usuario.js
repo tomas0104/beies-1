@@ -4,17 +4,9 @@ function ValidarUsuario() {
         data: $('#form-login').serialize(),
         url: 'controllers/UsuarioController.php?opcion=ValidarUsuario',
         success: function (respuesta) {
-            console.log(respuesta);
+            
             if (respuesta == 1) {
-                Swal.fire(
-                        'Exito',
-                        'Bienvenido',
-                        'success'
-                        )
-                setTimeout(function () {
                     window.location.href = 'views/inicio';
-                }, 1200);
-
             } else if (respuesta == 2) {
                 Swal.fire({
                     icon: 'error',
