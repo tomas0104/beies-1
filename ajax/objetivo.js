@@ -4,7 +4,22 @@ function Registrar_Objetivo() {
         url: './../controllers/ObjetivoController.php?opcion=RegistrarObjetivo',
         data: $('#form_objetivo').serialize(),
         success: function (respuesta) {
-            console.log(respuesta);
+            if (respuesta == 1) {
+                Swal.fire(
+                        'Exito',
+                        'Registro agregado con exito',
+                        'success'
+                        )
+                setTimeout("location.href = 'fases'", 1500);
+            } else if (respuesta == 0) {
+                console.log('respuesta->',respuesta);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Algo salio mal!',
+                })
+            }
+             console.log('respuesta->',respuesta);
         }
     });
 }
@@ -41,7 +56,21 @@ function Actualizar_Objetivo(){
         url: './../controllers/ObjetivoController.php?opcion=ActualizarObjetivo',
         data: $('#form_objetivo').serialize(),
         success: function (respuesta) {
-           alert(respuesta);
+          if (respuesta == 1) {
+                Swal.fire(
+                        'Exito',
+                        'Registro agregado con exito',
+                        'success'
+                        )
+                setTimeout("location.href = 'fases'", 1500);
+            } else if (respuesta == 0) {
+                console.log('respuesta->',respuesta);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Algo salio mal!',
+                })
+            }
            setTimeout("location.href = 'fases'", 1500);
         }
     });
